@@ -1,0 +1,26 @@
+<?php
+
+require_once("../../fncs/toolskit.php");
+
+require_once("./funcionariosplanosfuncoes.php");
+
+iniciapagina(TRUE,"Funcionários Planos","Consultar");
+$_REQUEST['salto']=$_REQUEST['salto']+1;
+montamenu("Funcionários Planos","Consultar","$_REQUEST[salto]");
+
+$bloco=( ISSET($_REQUEST['bloco']) ) ? $_REQUEST['bloco'] : 1 ;
+switch (TRUE)
+{
+  case ($bloco==1):
+  { 
+    picklist("C");
+    break;
+  }
+  case ( $bloco==2 ):
+  { 
+    mostraregistro("$_REQUEST[cpfuncionarioplano]",'',FALSE,$_REQUEST['salto']-2,$_REQUEST['salto']-1,"$_REQUEST[salto]");
+    break;
+  }
+}
+terminapagina("funcionariosplanos","Consultar","funcionariosplanosconsultar.php");
+ ?>
